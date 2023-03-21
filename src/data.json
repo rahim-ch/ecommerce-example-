@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "name": "Product 1",
+      "image": "https://via.placeholder.com/150",
+      "price": 10.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "image": "https://via.placeholder.com/150",
+      "price": 9.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "image": "https://via.placeholder.com/150",
+      "price": 12.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ]
+  
