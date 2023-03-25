@@ -5,7 +5,9 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center bg-amazonBlue text-white px-4 py-3">
+    <nav >
+    
+
       <Link to="/" className="text-2xl font-bold">
         E-commerce App
       </Link>
@@ -15,6 +17,7 @@ const Navbar = () => {
       <Link to="/cart" className="mx-2">
         <i className="fa fa-shopping-cart"></i>
       </Link>
+    
     </nav>
   );
 };

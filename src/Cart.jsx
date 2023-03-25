@@ -1,14 +1,20 @@
-import React from "react";
+
 import ProductCard from "./ProductCard";
+import React, { useContext } from "react";
+import CartContext from "./CartContext";
+import products from "./assets/data.json";
 
-const Cart = () => {
+  const Cart= () => {
+    const { carts, setCarts } = useContext(CartContext);
+    const filteredProducts = products.filter((product) =>
+      carts.includes(product.id)
+    );
+  
   return (
-    <div>
-      <h1 className="text-xl font-bold mb-4">Shopping Cart</h1>
-
-      <div className="flex flex-wrap justify-center">
-        <ProductCard />
-      </div>
+    <div className="flex flex-wrap justify-center">
+      {filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Favorites = () => {
   return (
     <div className="flex flex-wrap justify-center">
       {filteredProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} isProductPage={false}/>
       ))}
     </div>
   );

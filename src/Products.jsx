@@ -6,7 +6,7 @@ const Products = () => {
   return (
     <div className="flex flex-wrap justify-center">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} isProductPage={true}/>
       ))}
     </div>
   );

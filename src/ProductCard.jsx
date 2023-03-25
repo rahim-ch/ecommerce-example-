@@ -1,13 +1,32 @@
 import React, { useContext } from "react";
 import FavoriteContext from "./FavoriteContext";
+import CartContext from "./CartContext";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isProductPage }) => {
   const { favorites, setFavorites } = useContext(FavoriteContext);
+  const { carts, setCarts } = useContext(CartContext);
 
-  const handleIncrement = () => {
-    console.log(product.id);
-    setFavorites([...favorites, product.id]);
+  const handleAddToCart = () => {
+    if (carts.includes(product.id)) {
+      setCarts(carts.filter((id) => id !== product.id));
+    } else {
+      setCarts([...carts, product.id]);
+    }
   };
+  const cartButtonText = isProductPage
+  ? "Add to Carts"
+  : "Remove from Carts";
+  const handleAddToFavorites = () => {
+    if (favorites.includes(product.id)) {
+      setFavorites(favorites.filter((id) => id !== product.id));
+    } else {
+      setFavorites([...favorites, product.id]);
+    }
+  };
+
+  const favoriteButtonText = isProductPage
+    ? "Add to Favorites"
+    : "Remove from Favorites";
 
   return (
     <div className="max-w-sm w-full lg:max-w-full lg:grid grid- items-start mt-10 mb-4">
@@ -27,15 +46,15 @@ const ProductCard = ({ product }) => {
         <div className="flex items-center">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-            onClick={handleIncrement}
+            onClick={handleAddToCart}
           >
-            Add to Cart
+           {cartButtonText}
           </button>
           <button
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleIncrement}
+            onClick={handleAddToFavorites}
           >
-            Add to Favorites
+            {favoriteButtonText}
           </button>
         </div>
       </div>
