@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import products from './data.json';
+import products from './assets/data.json';
 
 const Products = () => {
   return (
