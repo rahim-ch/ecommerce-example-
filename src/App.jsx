@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter>
       <CartProvider>
         <FavoriteProvider>
-          <div className="bg-amazonOrange h-full">
+          <div>
             <Routes />
           </div>
         </FavoriteProvider>

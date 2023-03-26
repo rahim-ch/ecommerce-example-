@@ -10,6 +10,7 @@ import Products from './Products';
 import Search from './Search';
 import Favorites from './Favorites';
 import Cart from './Cart';
+import Footer from './Footer';
 
 const Routes = () => {
 return (
@@ -32,6 +33,7 @@ return (
 </Route>
 </Switch>
 </div>
+<Footer />
 </div>
 </Router>
 );
