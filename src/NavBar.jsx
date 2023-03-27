@@ -1,30 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import '@fortawesome/fontawesome-free/css/all.css';
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const Navbar = () => {
+  const [carts, setCarts] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
+
+  useEffect(() => {
+    setCartCount(carts.length);
+  }, [carts, cartCount]);
+
+  useEffect(() => {
+    setFavoriteCount(favorites.length);
+  }, [favorites, favoriteCount]);
+
+  const addToCart = (item) => {
+    setCarts([...carts, item]);
+    setCartCount(cartCount + 1);
+  };
+
+  const addToFavorites = (item) => {
+    setFavorites([...favorites, item]);
+    setFavoriteCount(favoriteCount + 1);
+  };
+
   return (
-    <nav className=" flex justify-between bg-gray-900 text-white w-screen">
+    <nav className="flex justify-between bg-gray-900 text-white w-screen">
       <div className="px-5 xl:px-12 py-6 flex w-full items-center">
         <Link to="/" className="text-3xl font-bold font-heading">
           E-commerce App
         </Link>
-        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-          <li><Link to="/" className="hover:text-gray-200">Home</Link></li>
-          <li><Link to="/favorites" className="hover:text-gray-200">Favorites</Link></li>
-          <li><Link to="/cart" className="hover:text-gray-200">Cart</Link></li>
-          <li><a className="hover:text-gray-200" href="#">Catagory</a></li>
-          <li><a className="hover:text-gray-200" href="#">Collections</a></li>
-          <li><a className="hover:text-gray-200" href="#">Contact Us</a></li>
+        <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+          <li>
+            <Link to="/" className="hover:text-gray-200">
+              Home
+            </Link>
+          </li>
+          <li>
+            <a className="hover:text-gray-200" href="#">
+              Category
+            </a>
+          </li>
+          <li>
+            <Link to="/cart" className="hover:text-gray-200 relative">
+              <i className="fas fa-shopping-cart"></i>
+              {cartCount > 0 && (
+                <span className="bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center absolute -top-1 -right-1">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </li>
+          <li>
+            <Link to="/favorites" className="hover:text-gray-200 relative">
+              <i className="fas fa-heart"></i>
+              {favoriteCount > 0 && (
+                <span className="bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center absolute -top-1 -right-1">
+                  {favoriteCount}
+                </span>
+              )}
+            </Link>
+          </li>
         </ul>
-        <div className="hidden xl:flex items-center space-x-5 ">
-          <a className="hover:text-gray-200" href="#">
-            <i className="fa fa-heart"></i>
-          </a>
-          <a className="hover:text-gray-200" href="#">
-            <i className="fa fa-shopping-cart"></i>
-          </a>
-        </div>
       </div>
     </nav>
   );
